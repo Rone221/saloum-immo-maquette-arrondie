@@ -1,0 +1,272 @@
+{
+  "2355": {
+    "largeur": 1500,
+    "hauteur": 2000,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "2364": {
+    "largeur": 1280,
+    "hauteur": 720,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1280
+    ]
+  },
+  "2421": {
+    "largeur": 1080,
+    "hauteur": 613,
+    "variantes": [
+      320,
+      480,
+      800,
+      1080
+    ]
+  },
+  "2493": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2494": {
+    "largeur": 623,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      623
+    ]
+  },
+  "2495": {
+    "largeur": 729,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      729
+    ]
+  },
+  "2499": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2500": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2502": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2505": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2516": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2517": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2519": {
+    "largeur": 810,
+    "hauteur": 1080,
+    "variantes": [
+      320,
+      480,
+      800,
+      810
+    ]
+  },
+  "2529": {
+    "largeur": 1080,
+    "hauteur": 810,
+    "variantes": [
+      320,
+      480,
+      800,
+      1080
+    ]
+  },
+  "2534": {
+    "largeur": 960,
+    "hauteur": 1280,
+    "variantes": [
+      320,
+      480,
+      800,
+      960
+    ]
+  },
+  "2537": {
+    "largeur": 2000,
+    "hauteur": 1334,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ]
+  },
+  "2542": {
+    "largeur": 2000,
+    "hauteur": 1500,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ]
+  },
+  "2580": {
+    "largeur": 2000,
+    "hauteur": 1117,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ]
+  },
+  "2616": {
+    "largeur": 2000,
+    "hauteur": 1264,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ]
+  },
+  "2538-plan": {
+    "largeur": 1380,
+    "hauteur": 1240,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1380
+    ]
+  },
+  "2413-droite": {
+    "largeur": 846,
+    "hauteur": 458,
+    "variantes": [
+      320,
+      480,
+      800,
+      846
+    ]
+  },
+  "ig-DfnIRfvPSRi": {
+    "largeur": 899,
+    "hauteur": 506,
+    "variantes": [
+      320,
+      480,
+      800,
+      899
+    ]
+  },
+  "ig-DfAoxMkAbKR": {
+    "largeur": 897,
+    "hauteur": 506,
+    "variantes": [
+      320,
+      480,
+      800,
+      897
+    ]
+  },
+  "ig-DZUeyGKPdj_": {
+    "largeur": 899,
+    "hauteur": 506,
+    "variantes": [
+      320,
+      480,
+      800,
+      899
+    ]
+  },
+  "2327-haut": {
+    "largeur": 1280,
+    "hauteur": 700,
+    "variantes": [
+      320,
+      480,
+      800,
+      1200,
+      1280
+    ]
+  },
+  "2352-haut": {
+    "largeur": 1080,
+    "hauteur": 650,
+    "variantes": [
+      320,
+      480,
+      800,
+      1080
+    ]
+  }
+}
