@@ -2,6 +2,8 @@
 
 Seconde proposition de site, direction « Parcelle » : des surfaces aux coins arrondis posées sur du blanc, les photos du client en grand, un contenu allégé. Même contenu que la maquette « Relevé », autre forme.
 
+Depuis la revue 2 : vraies cartes pour les programmes, les documents fonciers et les vidéos, carrousels accessibles (défilement natif, boutons, sans lecture automatique), diaporama des étapes du chantier en ouverture, apparitions au défilement en CSS. Les vidéos s'ouvrent sur leur plateforme, avec une de nos photos ou une couverture écrite, jamais une vignette tirée de YouTube.
+
 ## Lancer en local
 
 ```bash

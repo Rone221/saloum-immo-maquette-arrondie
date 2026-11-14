@@ -28,8 +28,10 @@ export function FilAriane({ fil, className }: { fil: EtapeFil[]; className?: str
 
 /**
  * Ouverture d'une page intérieure : fil d'Ariane (fiches), h1, chapeau, puis les
- * actions (`children`). Avec `aside` (une photo, en général), deux colonnes au
- * bureau : le texte à gauche, l'aside à droite ; sur mobile, l'aside passe dessous.
+ * actions (`children`). Avec `aside` (une carte, en général), deux colonnes dès 960 px :
+ * le texte à gauche, l'aside à droite, 7 et 5 colonnes jusqu'à 1 239 px, 6 et 6 au
+ * bureau. En dessous, l'aside passe dessous ; de 768 à 959 px, il se centre
+ * (« tab:max-[60rem]:mx-auto » sur la carte, qui a sa largeur maximale).
  * Sans aside, le texte seul, 48 rem au plus.
  * Avec un fil, la marge haute raccourcit : les liens du fil ont déjà 44 px de haut.
  * `serre` : marge basse courte, quand une grande photo suit tout de suite (fiches,
@@ -54,7 +56,7 @@ export function PageTete({
 }) {
   const avecFil = Boolean(fil?.length);
   const texte = (
-    <div className={cx(aside ? "desk:col-span-6 desk:pr-6" : "max-w-[48rem]")}>
+    <div className={cx(aside ? "min-[60rem]:col-span-7 desk:col-span-6 desk:pr-6" : "max-w-[48rem]")}>
       {fil && avecFil ? <FilAriane fil={fil} /> : null}
       <h1 id="t-page" className={cx("titre-1", avecFil && "mt-2 tab:mt-3")}>
         {typo(titre)}
@@ -78,9 +80,9 @@ export function PageTete({
       )}
     >
       {aside ? (
-        <div className="grid gap-10 desk:grid-cols-12 desk:items-center desk:gap-8">
+        <div className="grid gap-10 min-[60rem]:grid-cols-12 min-[60rem]:items-center min-[60rem]:gap-8">
           {texte}
-          <div className="desk:col-span-6">{aside}</div>
+          <div className="min-[60rem]:col-span-5 desk:col-span-6">{aside}</div>
         </div>
       ) : (
         texte

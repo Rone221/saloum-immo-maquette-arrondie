@@ -12,7 +12,7 @@ const MOIS_SUIVANT = new RegExp(`(?=(?:${MOIS.join("|")})(?![\\p{L}]))`, "u").so
 /**
  * Espaces insécables : avant « : ; ? ! », à l'intérieur des guillemets,
  * entre les groupes de chiffres (46 000, 77 400 75 75), avant une unité ou un
- * multiple (3 km, 10 millions FCFA), dans une durée (7 min 26), entre « sortie »
+ * multiple (3 km, 9 hectares, 10 millions FCFA), dans une durée (7 min 26), entre « sortie »
  * et son numéro (sortie 10), entre le jour et le mois (8 juillet, 1er juin).
  */
 export function typo(texte: string): string {
@@ -21,7 +21,7 @@ export function typo(texte: string): string {
     .replace(/« /g, `«${NBSP}`)
     .replace(/(\d) à (?=\d)/g, `$1${NBSP}à${NBSP}`)
     .replace(/(\d) (?=\d)/g, `$1${NBSP}`)
-    .replace(/(\d) (?=(?:m²|ha|km|min|h|millions?|milliards?|FCFA)(?![\p{L}]))/gu, `$1${NBSP}`)
+    .replace(/(\d|…) (?=(?:m²|ha|hectares?|km|min|h|millions?|milliards?|FCFA)(?![\p{L}]))/gu, `$1${NBSP}`)
     .replace(/\b(millions?|milliards?) (?=FCFA\b)/g, `$1${NBSP}`)
     .replace(/\bmin (?=\d)/g, `min${NBSP}`)
     .replace(/\b([Ss]ortie) (?=\d)/g, `$1${NBSP}`)

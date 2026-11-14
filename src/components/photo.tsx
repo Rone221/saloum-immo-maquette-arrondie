@@ -30,6 +30,16 @@ type Props = {
 };
 
 /**
+ * Photo plus large que haute (dimensions de public/photos/photos.json). Dans un cadre en
+ * hauteur, recadrée en object-cover, elle est dessinée plus large que le cadre : son
+ * `sizes` le dit.
+ */
+export function enPaysage(id: PhotoId): boolean {
+  const d = DIMENSIONS[id];
+  return d.largeur > d.hauteur;
+}
+
+/**
  * Photo du client, servie en WebP par le chargeur maison (src/lib/image-loader.ts).
  * Chargement différé natif, sauf `preload`.
  */

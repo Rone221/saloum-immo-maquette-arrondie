@@ -37,6 +37,9 @@ export function Section({
  * C'est la « parcelle » de la direction : un bloc posé sur le blanc, comme un lot
  * borné. Deux plaques ne se suivent jamais. Sur le bleu, l'anneau de focus passe au
  * blanc (le bleu vif ne s'y voit pas).
+ * overflow-clip et pas overflow-hidden : la plaque coupe ses coins sans devenir un
+ * conteneur de défilement, sinon les apparitions au défilement (view()) qu'elle
+ * contient resteraient figées.
  */
 export function Plaque({
   ton = "brume",
@@ -50,40 +53,13 @@ export function Plaque({
   return (
     <div
       className={cx(
-        "isolate overflow-hidden rounded-plaque",
+        "isolate overflow-clip rounded-plaque",
         ton === "brume" ? "bg-brume text-encre" : "bg-bleu text-white [&_:focus-visible]:outline-white",
         className,
       )}
     >
       {children}
     </div>
-  );
-}
-
-/**
- * Panneau : petite surface brume arrondie à 20 px (le rayon d'une photo), 24 px de
- * marge, 32 dès 768 px. Pour un encart dans une section : l'offre AIBD, les lots
- * publiés, les vidéos de la diaspora. Une plaque est une section ; un panneau est
- * dans une section. Un bouton posé dessus prend le ton « inverse ».
- */
-export const CLASSES_PANNEAU = "rounded-photo bg-brume p-6 tab:p-8";
-
-export function Panneau({
-  as: Balise = "div",
-  className,
-  children,
-  ...reste
-}: {
-  as?: "div" | "section" | "article" | "aside" | "li";
-  className?: string;
-  children: ReactNode;
-  "aria-labelledby"?: string;
-  id?: string;
-}) {
-  return (
-    <Balise className={cx(CLASSES_PANNEAU, className)} {...reste}>
-      {children}
-    </Balise>
   );
 }
 

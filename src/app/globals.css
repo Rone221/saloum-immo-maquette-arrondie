@@ -57,6 +57,11 @@
   --radius-photo: 20px;
   --radius-plaque: 24px;
 
+  /* Deux ombres, teintées d'encre (revue 2) : la carte au repos, la carte survolée.
+     Une carte blanche posée sur le blanc a son ombre de repos ; sur la brume, aucune. */
+  --shadow-carte: 0 1px 2px rgb(14 26 43 / 0.05), 0 8px 22px -12px rgb(14 26 43 / 0.18);
+  --shadow-survol: 0 2px 6px rgb(14 26 43 / 0.06), 0 26px 50px -22px rgb(14 26 43 / 0.36);
+
   --breakpoint-tab: 48rem;      /* 768 px */
   --breakpoint-desk: 77.5rem;   /* 1 240 px : navigation en ligne */
   --breakpoint-wide: 85rem;     /* 1 360 px : numéro dans le bouton d'en-tête */
@@ -149,6 +154,72 @@
   transition-property: background-color, color, border-color, transform;
   transition-duration: 0.18s;
   transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Carte cliquable : elle se soulève de 4 px et son ombre s'allonge au survol
+   (translate et box-shadow seulement, rien qui relance la mise en page). */
+@utility transition-carte {
+  transition-property: translate, box-shadow, background-color;
+  transition-duration: 0.32s;
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Photo d'une carte : agrandissement lent au survol de la carte (.group). */
+@utility zoom-carte {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  @media (hover: hover) {
+    :where(.group):hover & { transform: scale(1.045); }
+  }
+}
+
+/* Apparition au défilement : le bloc monte de 28 px et s'éclaire en entrant dans
+   l'écran. Animation liée au défilement, sans JavaScript ; sans prise en charge, ou
+   avec prefers-reduced-motion, le bloc est simplement là. */
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+@utility apparition {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: apparition linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+
+/* Frise datée : le trait se dessine de gauche à droite pendant que la frise entre. */
+@keyframes trace {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@utility trace-frise {
+  transform-origin: left center;
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: trace linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 50%;
+    }
+  }
+}
+
+/* Segment de progression du diaporama de l'ouverture : il se remplit pendant la
+   durée d'une étape ; la fin de l'animation fait passer à l'étape suivante. */
+@keyframes remplir {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@utility remplissage {
+  transform-origin: left center;
+  animation: remplir var(--duree-etape, 6s) linear both;
+}
+
+/* Défilement horizontal sans barre visible (carrousels : les boutons et le doigt suffisent). */
+@utility sans-barre {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 }
 
 /* Photo cliquable : léger agrandissement au survol, dans son cadre arrondi. */

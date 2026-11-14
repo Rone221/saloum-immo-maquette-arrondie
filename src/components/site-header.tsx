@@ -36,9 +36,9 @@ export function SiteHeader() {
 
         <a
           href={waHref()}
-          className="inline-flex h-11 flex-none items-center gap-2 rounded-bouton bg-bleu px-3.5 font-semibold text-white transition-surface hover:bg-bleu-fonce tab:h-12 tab:px-4.5"
+          className="group inline-flex h-11 flex-none items-center gap-2 rounded-bouton bg-bleu px-3.5 font-semibold text-white transition-surface hover:bg-bleu-fonce active:translate-y-px tab:h-12 tab:px-4.5"
         >
-          <WhatsappLogo aria-hidden size={22} className="flex-none" />
+          <WhatsappLogo aria-hidden size={22} className="flex-none transition-transform duration-300 group-hover:-rotate-12" />
           {/* Sous 352 px, l'icône seule à l'écran ; le mot reste lu (sr-only). */}
           <span className="max-[22rem]:sr-only">WhatsApp</span>
           <span className="ml-1 hidden border-l border-white/40 pl-3 font-medium wide:inline">{typo(MOBILE.court)}</span>

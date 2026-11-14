@@ -77,7 +77,9 @@ export const RESEAUX: Reseau[] = [
   {
     nom: "YouTube",
     href: "https://www.youtube.com/@saloumimobat",
-    repere: f("47 vidéos", "contenu-maquette §3", { date: RELEVE_RESEAUX }),
+    // Pas de nombre de vidéos (revue 2) : le plan de Contact donne YouTube sans chiffre,
+    // comme la maquette Relevé. Les « 47 vidéos » du 13.11.2026 sont dans contenu-maquette §3.
+    repere: f("@saloumimobat", "contenu-maquette §3"),
   },
   {
     nom: "Instagram",
@@ -165,6 +167,16 @@ export const FRISE_AXE = [
 export const FONDATEUR = {
   nom: f("Babacar Ndiaye", "contenu-maquette §2"),
   role: f("Fondateur et directeur général de Saloum Immo", "contenu-maquette §2"),
+  /** Sous son nom, à l'accueil. */
+  roleCourt: f("Fondateur et directeur général.", "contenu-maquette §2"),
+  /** L'année de création reste à valider (contenu-maquette §2). */
+  creation: fv("En 2022, il crée Saloum Immo.", "contenu-maquette §2, parcours publié sur son site ; année à valider", {
+    date: "2022",
+  }),
+  enVideo: f(
+    "Il explique lui-même en vidéo la délibération, le bail et le titre foncier.",
+    "contenu-maquette §2 et §9 ; YouTube rpbEvdrm5AA",
+  ),
   /** Résumée, jamais recopiée (contenu-maquette §2). */
   biographie: fv(
     "Il a commencé à l’aéroport Léopold Sédar Senghor, comme agent de nettoyage. Il y a appris seul le français et l’anglais. Ensuite Dakar Catering, le change, puis la vente et la location de véhicules. En 2022, il crée Saloum Immo.",

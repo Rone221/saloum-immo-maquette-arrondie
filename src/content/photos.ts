@@ -19,6 +19,12 @@ export type FichePhoto = {
   legende?: string;
   /** Cadrage par défaut (object-position). */
   position?: string;
+  /**
+   * Largeur dessinée maximale, en px CSS (revue 2) : 2534 au-delà de 440 px laisse lire
+   * le panneau ; 2413-droite et les captures ig-* sont des fichiers étroits, jamais
+   * agrandis. Vérifié à l'écran par la capture de contrôle, pas au build.
+   */
+  largeurMax?: number;
   statut: Statut;
   /** Usage prévu et réserves. */
   note: string;
@@ -47,14 +53,16 @@ const FICHES = {
     alt: "Panneau Sakina City planté au bord d’une voie en latérite, derrière une bordure béton.",
     legende: "Le panneau du programme, au bord d’une voie en latérite bordée de béton.",
     position: "50% 10%",
+    largeurMax: 440,
     statut: "ok",
-    note: "Sakina City : carte de l'accueil, rangée de Terrains et fiche. Cadrée sur le panneau.",
+    note: "Sakina City : cartes et fiche. Cadrée sur le panneau, 440 px de large au plus.",
   },
   "2413-droite": {
     alt: "Voie en latérite neuve entre deux bordures béton, maisons au loin.",
     legende: "Voie en latérite et bordures béton.",
+    largeurMax: 600,
     statut: "ok",
-    note: "Fiche Sakina City seulement. Photo de droite de la planche 2413, sans logo ni titre incrusté. 600 px de large au plus.",
+    note: "Fiche Sakina City et couverture de sa visite virtuelle. Photo de droite de la planche 2413, sans logo ni titre incrusté. 600 px de large au plus.",
   },
   "2616": {
     alt: "Vue drone d’un quartier qui se construit : maisons neuves et pistes en latérite sous un ciel turquoise.",
@@ -66,12 +74,14 @@ const FICHES = {
   "ig-DfnIRfvPSRi": {
     alt: "Vue drone d’un quartier en construction, traversé de pistes en latérite.",
     legende: "Vue drone du quartier.",
+    largeurMax: 899,
     statut: "ok",
     note: "Réserve. Capture Instagram basse définition, du même survol que 2616 : pas sur la fiche Sicap Keur Massar, qui a déjà 2616 (4.4). La vidéo y est en lien texte.",
   },
   "ig-DfAoxMkAbKR": {
     alt: "Une collaboratrice en casque et gilet Saloum Immo parle face caméra, sur un lot de Sicap Keur Massar.",
     legende: "Une collaboratrice présente un lot de Sicap Keur Massar, sur place.",
+    largeurMax: 899,
     statut: "a-valider",
     note: "Vignette du reel du 27.10.2026 (Diaspora). Personne n'est nommé. 899 px de large au plus.",
   },
@@ -79,6 +89,7 @@ const FICHES = {
     alt: "Babacar Ndiaye, assis derrière un bureau, face caméra.",
     legende: "Babacar Ndiaye, pendant l’interview publiée le 8 juin 2026.",
     position: "74% 40%",
+    largeurMax: 899,
     statut: "a-valider",
     note: "Fondateur. Le logo incrusté en haut à gauche doit sortir du cadre. 899 px de large : jamais agrandie au-delà.",
   },
@@ -194,7 +205,9 @@ const FICHES = {
   },
   "2537": {
     alt: "Rond-point à l’entrée de Millennium City, trois personnes posent devant.",
-    legende: "Entrée de Millennium City.",
+    // La légende décrit la scène, sans lieu : sous « Réalisations », « Entrée de Millennium
+    // City » se lirait comme une entrée faite par Saloum Immo (seule la canalisation l'est).
+    legende: "Trois personnes posent devant un rond-point.",
     statut: "a-valider",
     note: "À propos, réalisations. Personne n'est nommé. Toujours « travaux réalisés », jamais « notre programme ».",
   },

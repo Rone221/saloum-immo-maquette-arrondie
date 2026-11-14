@@ -28,7 +28,8 @@ export function ariaCourant(etat: ReturnType<typeof etatRubrique>) {
 
 /**
  * Navigation en ligne de l'en-tête (dès 1 240 px). Six liens, ordre fixe, sans numéro.
- * Rubrique courante : soulignée d'orange (la seule touche d'orange de l'en-tête).
+ * Rubrique courante : soulignée d'orange (la seule touche d'orange de l'en-tête). Au
+ * survol, un trait bleu se dessine sous le lien.
  */
 export function NavLinks() {
   const chemin = useChemin();
@@ -42,8 +43,11 @@ export function NavLinks() {
               href={r.href}
               aria-current={ariaCourant(etat)}
               className={cx(
-                "inline-flex min-h-11 items-center font-medium whitespace-nowrap decoration-[3px] underline-offset-[10px] transition-colors hover:text-bleu",
-                etat && "underline decoration-orange",
+                "relative inline-flex min-h-11 items-center font-medium whitespace-nowrap transition-colors hover:text-bleu",
+                // Le trait se dessine de gauche à droite au survol (bleu) ; il reste orange
+                // sous la rubrique courante.
+                "after:absolute after:inset-x-0 after:bottom-1 after:h-[3px] after:origin-left after:rounded-bouton after:transition-transform after:duration-300",
+                etat ? "after:scale-x-100 after:bg-orange" : "after:scale-x-0 after:bg-bleu hover:after:scale-x-100",
               )}
             >
               {r.libelle}

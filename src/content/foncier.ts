@@ -15,7 +15,7 @@ export const CE_QUE_NOUS_FAISONS = {
   titre: "Ce que nous faisons",
   lignes: [
     f("Les documents fonciers sont vérifiés.", "TikTok, 15.10.2025 ; contenu-maquette §6", { date: "2025-10-15" }),
-    f("Un notaire agréé accompagne chaque étape.", "TikTok, 15.10.2025 ; contenu-maquette §6", { date: "2025-10-15" }),
+    f("Un notaire agréé accompagne chaque étape de l’achat.", "TikTok, 15.10.2025 ; contenu-maquette §6", { date: "2025-10-15" }),
     f("Vous visitez le terrain avec notre équipe, sur rendez-vous.", "contenu-maquette §6 (visites accompagnées)"),
     f("Le conseil est gratuit, pour acheter, vendre ou louer.", "Site 2025 ; contenu-maquette §6"),
   ],

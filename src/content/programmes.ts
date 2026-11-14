@@ -27,10 +27,15 @@ export type Programme = {
   href: string;
   /** Statut foncier en mots (allegement 2.5). */
   statut: Fait;
+  /** Forme du badge posé sur la photo : titre foncier publié, ou statut à demander. */
+  statutCle: "tf" | "a-demander";
+  /**
+   * Repères courts des cartes (revue 2, 14.11.2026) : trois au plus, chacun tiré d'un
+   * fait de ce fichier, sans rien ajouter. Ce qui est daté le reste.
+   */
+  reperes: Fait[];
   /** Où, en une phrase (cartes, rangées). */
   lieu: Fait;
-  /** Le fait de la carte d'accueil, en une phrase. */
-  accroche: Fait;
   /** Rangée de la page Terrains. */
   surfaces: Fait;
   dejaFait: Fait;
@@ -44,20 +49,32 @@ export type Programme = {
   lots?: { phrase: Fait; avertissement: string };
   message: string;
   photo: PhotoId;
-  /** Photo secondaire de la fiche (Sakina City : 2413-droite, 600 px au plus). */
-  photoSeconde?: PhotoId;
   videos: CleVideo[];
 };
 
 const PRIX_SUR_DEMANDE = f("Sur demande.", "contenu-maquette §5 (prix non publié)");
+
+/**
+ * Sous « Sur demande », dans la carte d'action des fiches (revue 2). Une demande à faire,
+ * pas un engagement de l'agence. Même phrase que la maquette Relevé.
+ */
+export const PRIX_A_DEMANDER = f(
+  "Demandez le prix et les lots disponibles sur WhatsApp.",
+  "contenu-maquette §5 (prix non publié)",
+);
 
 export const SAKINA_CITY: Programme = {
   slug: "sakina-city",
   nom: "Sakina City",
   href: "/terrains/sakina-city/",
   statut: f("Titres fonciers individuels", "contenu-maquette §5"),
+  statutCle: "tf",
+  reperes: [
+    f("78 parcelles de 150 m²", "contenu-maquette §5"),
+    f("Viabilisé", "contenu-maquette §5 (terrains viabilisés)"),
+    f("Voies avec bordures béton", "contenu-maquette §5"),
+  ],
   lieu: f("Kounoune, à 3 km de la sortie du péage.", "contenu-maquette §5"),
-  accroche: f("78 parcelles de 150 m², viabilisées.", "contenu-maquette §5"),
   surfaces: f("78 parcelles de 150 m²", "contenu-maquette §5"),
   dejaFait: f("Terrains viabilisés, voies en latérite avec bordures béton", "contenu-maquette §5"),
   chapeau: f(
@@ -65,7 +82,7 @@ export const SAKINA_CITY: Programme = {
     "contenu-maquette §5",
   ),
   fiche: [
-    { cle: "Statut foncier", valeur: f("Titres fonciers individuels. Titre mère TF 15026/R.", "contenu-maquette §5") },
+    { cle: "Statut foncier", valeur: f("Titres fonciers individuels. Titre mère `TF 15026/R`.", "contenu-maquette §5") },
     { cle: "Parcelles", valeur: f("78 parcelles de 150 m².", "contenu-maquette §5") },
     { cle: "Déjà fait", valeur: f("Terrains viabilisés. Voies en latérite avec bordures béton.", "contenu-maquette §5") },
     { cle: "Réseaux", valeur: f("Accès à l’eau et à l’électricité.", "contenu-maquette §5") },
@@ -74,7 +91,6 @@ export const SAKINA_CITY: Programme = {
   ],
   message: MESSAGES.sakinaCity.texte,
   photo: "2534",
-  photoSeconde: "2413-droite",
   videos: ["visiteSakina"],
 };
 
@@ -83,10 +99,12 @@ export const SICAP_KEUR_MASSAR: Programme = {
   nom: "Sicap Keur Massar",
   href: "/terrains/sicap-keur-massar/",
   statut: f("Titre foncier individuel", "contenu-maquette §5"),
+  statutCle: "tf",
+  reperes: [
+    fv("Lots de 150 à 237 m², publiés en 2026", "contenu-maquette §5 (lots de 150, 175 et 237 m²)", { date: "2026" }),
+    f("Terrassé et viabilisé", "contenu-maquette §5"),
+  ],
   lieu: f("À 10 min de la sortie 10, 7 min du Lac Rose.", "contenu-maquette §5"),
-  accroche: fv("Lots publiés en 2026 : 150, 175 et 237 m².", "contenu-maquette §5", {
-    date: "2026",
-  }),
   surfaces: fv("Lots publiés en 2026 : 150, 175 et 237 m²", "contenu-maquette §5", {
     date: "2026",
   }),
@@ -120,8 +138,13 @@ export const LAC_TOWN: Programme = {
   nom: "Lac Town",
   href: "/terrains/lac-town/",
   statut: f("Statut foncier à demander", "contenu-maquette §5 (statut juridique inconnu)"),
+  statutCle: "a-demander",
+  reperes: [
+    f("Lancé le 30 mars 2026", "YouTube qtAHrgDQd4U ; contenu-maquette §5", { date: "2026-03-30" }),
+    f("Voies ouvertes", "contenu-maquette §5"),
+    f("Viabilisé", "contenu-maquette §5 (viabilisation)"),
+  ],
   lieu: f("Près du Lac Rose, à quelques minutes de la sortie 10.", "contenu-maquette §5"),
-  accroche: f("Terrassement, viabilisation, voies ouvertes.", "contenu-maquette §5"),
   surfaces: fv("150 à 450 m², d’après notre vidéo du 21 mai 2026", "YouTube Wq8pwLDb4L0, à l’oral", {
     date: "2026-05-21",
     oral: true,
@@ -188,10 +211,10 @@ export type OffreDatee = {
 };
 
 export const RECASEMENT_AIBD: OffreDatee & {
-  /** Ligne sous les cartes de l'accueil. */
-  ligneAccueil: Fait;
   /** Chapeau de la fiche. */
   chapeau: Fait;
+  /** Carte « offre datée » de l'accueil et de Terrains : le lieu à part, le prix avec sa date. */
+  ticket: { lieu: Fait; texte: Fait; date: string };
 } = {
   slug: "recasement-aibd",
   nom: "Recasement AIBD",
@@ -202,16 +225,21 @@ export const RECASEMENT_AIBD: OffreDatee & {
     "contenu-maquette §5 (offre d’avril 2025)",
     { date: "2025-04" },
   ),
-  ligneAccueil: f(
-    "Recasement AIBD, Diamniadio : offre d’avril 2025, en bail, plus de 200 m², 6 à 10 millions FCFA selon la position. Demandez si elle est encore disponible.",
-    "contenu-maquette §5 (offre d’avril 2025)",
-    { date: "2025-04" },
-  ),
+  // La date une fois, collée au prix (revue 2) : ni en tête du chapeau, ni en puce.
   chapeau: f(
-    "Offre d’avril 2025. Parcelles en bail de plus de 200 m², à Diamniadio, près de l’aéroport AIBD. 6 à 10 millions FCFA selon la position, au prix d’avril 2025. Disponibilité à demander.",
+    "Parcelles en bail de plus de 200 m², à Diamniadio, près de l’aéroport AIBD. 6 à 10 millions FCFA selon la position, au prix d’avril 2025. Disponibilité à demander.",
     "contenu-maquette §5 (offre d’avril 2025)",
     { date: "2025-04" },
   ),
+  ticket: {
+    lieu: f("Diamniadio, près de l’aéroport AIBD", "contenu-maquette §5"),
+    texte: f(
+      "Parcelles en bail de plus de 200 m². 6 à 10 millions FCFA selon la position, au prix d’avril 2025. Disponibilité à demander.",
+      "contenu-maquette §5 (offre d’avril 2025)",
+      { date: "2025-04" },
+    ),
+    date: "Offre d’avril 2025",
+  },
   bouton: "Demander la disponibilité sur WhatsApp",
   message: MESSAGES.recasementAibd.texte,
 };

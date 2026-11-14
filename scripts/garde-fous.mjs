@@ -3,8 +3,9 @@
 // Échoue s'il trouve une occurrence interdite.
 //
 // Ce qui change par rapport au « Relevé » : les rayons de l'échelle (bouton, photo,
-// plaque), les icônes Phosphor et la bibliothèque motion sont permis. Les règles de
-// faits, de mots et de photos ne bougent pas, et s'ajoutent celles de l'allègement :
+// plaque), les icônes Phosphor et la bibliothèque motion sont permis. Depuis la revue 2
+// (recherche/revue-2/plan.md), deux ombres teintées aussi : shadow-carte et shadow-survol.
+// Les règles de faits, de mots et de photos ne bougent pas, et s'ajoutent celles de l'allègement :
 // le groupe 2538 / 2553 / 2580 / 2421, les étiquettes supprimées, les dates en lettres.
 //
 // Le tiret cadratin est construit par String.fromCharCode : le caractère
@@ -47,7 +48,14 @@ const REGLES = [
     filtre: (m) => !/^rounded(-(t|r|b|l|tl|tr|bl|br|s|e|ss|se|es|ee))?-(bouton|photo|plaque|none)$/.test(m),
   },
   { nom: "classe : rayon nu", re: /(?<![\w-])rounded(?=["'\s`])/g, ou: "source" },
-  { nom: "classe : ombre", re: /(?<![\w-])(shadow|drop-shadow|inset-shadow)-/g, ou: "code" },
+  // Ombres : seulement les deux jetons de globals.css (revue 2, 14.11.2026), la carte au
+  // repos et la carte survolée. Pas d'ombre libre, pas d'ombre de texte ni de filtre.
+  {
+    nom: "classe : ombre hors jetons",
+    re: /(?<![\w-])(?:drop-|inset-)?shadow-[\w[\]./%-]+/g,
+    ou: "code",
+    filtre: (m) => !/^shadow-(carte|survol|none)$/.test(m),
+  },
   { nom: "classe : flou ou verre dépoli", re: /(?<![\w-])(blur|backdrop)-|backdrop-filter/g, ou: "source" },
   { nom: "classe : dégradé", re: /(?<![\w-])bg-(linear|radial|conic|gradient)|(?:linear|radial|conic)-gradient\(/g, ou: "source" },
   { nom: "classe : animation Tailwind", re: /(?<![\w-])animate-/g, ou: "source" },

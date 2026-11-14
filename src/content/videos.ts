@@ -11,6 +11,8 @@ export type Video = {
   titre: string;
   /** Libellé court dans la liste « À regarder avant d'appeler ». */
   titreListe?: string;
+  /** Sujet en deux ou trois mots, écrit en grand sur une couverture sans photo. */
+  motCle: string;
   /** AAAA-MM-JJ, date de publication. */
   date?: string;
   /** « 7 min 26 » */
@@ -25,8 +27,9 @@ export const VIDEOS = {
   presentation: {
     id: "CSF130Y_hRc",
     plateforme: "YouTube",
-    titre: "Saloum Immo en deux minutes",
-    titreListe: "Saloum Immo en deux minutes",
+    motCle: "Saloum Immo",
+    titre: "Saloum Immo en quelques minutes",
+    titreListe: "Saloum Immo en quelques minutes",
     date: "2026-07-24",
     duree: "1 min 58",
     href: yt("CSF130Y_hRc"),
@@ -35,6 +38,7 @@ export const VIDEOS = {
   interviewDG: {
     id: "rpbEvdrm5AA",
     plateforme: "YouTube",
+    motCle: "Les trois documents",
     titre: "Babacar Ndiaye explique les trois documents",
     duree: "7 min 26",
     href: yt("rpbEvdrm5AA"),
@@ -43,6 +47,7 @@ export const VIDEOS = {
   lancementLacTown: {
     id: "qtAHrgDQd4U",
     plateforme: "YouTube",
+    motCle: "Lac Town",
     titre: "Lancement de Lac Town",
     titreListe: "Lancement de Lac Town",
     date: "2026-03-30",
@@ -52,6 +57,7 @@ export const VIDEOS = {
   visiteLacTown: {
     id: "Wq8pwLDb4L0",
     plateforme: "YouTube",
+    motCle: "Lac Town",
     titre: "Visite commentée de Lac Town",
     titreListe: "Lac Town, visite commentée",
     date: "2026-05-21",
@@ -61,6 +67,7 @@ export const VIDEOS = {
   visiteSakina: {
     id: "HFnSMeaCXNI",
     plateforme: "YouTube",
+    motCle: "Sakina City",
     titre: "Visite virtuelle de Sakina City",
     titreListe: "Sakina City, visite virtuelle",
     href: yt("HFnSMeaCXNI"),
@@ -69,6 +76,7 @@ export const VIDEOS = {
   lotsSKM: {
     id: "SG020Z9tq3o",
     plateforme: "YouTube",
+    motCle: "Sicap Keur Massar",
     titre: "Les lots de Sicap Keur Massar",
     titreListe: "Sicap Keur Massar, les lots",
     date: "2026-06-10",
@@ -80,6 +88,7 @@ export const VIDEOS = {
   realisations2026: {
     id: "oj5Z_z2O1_k",
     plateforme: "YouTube",
+    motCle: "Réalisations 2026",
     titre: "Nos réalisations 2026",
     titreListe: "Nos réalisations 2026",
     date: "2026-06-24",
@@ -90,6 +99,7 @@ export const VIDEOS = {
   nicad: {
     id: "Rrfi4zPWsbY",
     plateforme: "YouTube",
+    motCle: "NICAD",
     titre: "Le NICAD expliqué en vidéo",
     duree: "1 min 12",
     href: yt("Rrfi4zPWsbY"),
@@ -98,6 +108,7 @@ export const VIDEOS = {
   terrassementKounoune: {
     id: "Hi1DiDoX_zA",
     plateforme: "YouTube",
+    motCle: "Kounoune",
     // « Lancement » : le 07.09.2024, le terrassement est lancé sur 3 hectares, pas fini.
     titre: "Lancement du terrassement sur 3 hectares à Kounoune",
     date: "2024-09-07",
@@ -107,6 +118,7 @@ export const VIDEOS = {
   reelLotsSKM: {
     id: "DfAoxMkAbKR",
     plateforme: "Instagram",
+    motCle: "Sicap Keur Massar",
     titre: "Une collaboratrice présente un lot de Sicap Keur Massar",
     date: "2026-10-27",
     href: "https://www.instagram.com/saloum_immo/reel/DfAoxMkAbKR/",
@@ -115,6 +127,7 @@ export const VIDEOS = {
   reelDroneSKM: {
     id: "DfnIRfvPSRi",
     plateforme: "Instagram",
+    motCle: "Sicap Keur Massar",
     titre: "Vue drone du quartier de Sicap Keur Massar",
     date: "2026-11-11",
     href: "https://www.instagram.com/saloum_immo/reel/DfnIRfvPSRi/",
